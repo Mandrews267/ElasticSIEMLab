@@ -31,7 +31,8 @@ In this lab, I will demonstrate how you can set up a SIEM home lab using Oracleâ
   <li>Sign up for a free 14-day trial account to use Elastic Cloud at <a href="https://cloud.elastic.co/registration">https://cloud.elastic.co/registration.</a></li>
   <p align="center">
     Go to the link
-    <img src="https://i.imgur.com/xh60I21.png"/>
+    ![Image](https://github.com/user-attachments/assets/af57e383-16ac-40aa-8910-cc3e781fd89b)
+    
 </ol>
 <p>Let this be the first paragraph of information</p>
 <p align="center">
