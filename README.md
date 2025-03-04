@@ -23,21 +23,16 @@ In this lab, I will demonstrate how you can set up a SIEM home lab using Oracle�
 - <b>Create a dashboard to visualize security events</b>
 - <b>Create alerts for security events</b>
 <br/>
-
 <h2>Task walk-through:</h2>
-
 <h3>Task 1: Set up an Elastic Account</h3>
 <ol>
   <li>Sign up for a free 14-day trial account to use Elastic Cloud at: <a href="https://cloud.elastic.co/registration">https://cloud.elastic.co/registration</a>.</li>
-  <p align="center">
- 
+  <br>
    <div>
      <img src="https://i.imgur.com/xh60I2l.png" alt="Elastic SIEM Welcome Page">
-   </div>
-   
+   </div>   
  <br>
     <p>During the registration process, the application service asks a few questions about what you are wanting to use the Elastic platform for. We are using it for SIEM monitoring, so select the security tab on the right side of the screen.  They will also request a region for the cloud service to be deployed from, I would select the one they recommend as this is for experimental use at this time.  This will automatically generate the first Elastisearch deployment, which will be the one that will be used for the data collection.</p>
-
  <li>After registering your Elastic account, log into the Elastic Cloud console at: <a href="https://cloud.elastic.co">https://cloud.elastic.co</a>.</li> 
  <br>
 <div>
@@ -46,7 +41,6 @@ In this lab, I will demonstrate how you can set up a SIEM home lab using Oracle�
 <br>
 <p>When you reach this point, you will have created your Elastic account and begun your free trial.  The deployment, "My Deployment" will be displayed and to enter your deployment you will click on the name.  I recomend that familiarizing yourself with the layout of the different areas of the application first before you start using, as navagating the different areas effectively is a large part of being successful in using this tool.</p>
 </ol>
-</p>
 <h3>Task 2: Setting up the Linux VM</h3>
 <p>Next, we set up a Linux virtual machine.  There are many Linux distributions, and you can select any one of the as well as any hypervisor.  I selected to use Oracle VirtualBox as my hypervisor and Kali Linux as that is the distro I am most familiar with.  Since some individuals may not have experience with setting up virtual environments, I have provided the steps that need to be completed to create the Linux virtual machine on a Windows OS host system below.</p>
 <b>Follow the following steps to create the virtual machine:</b>
@@ -81,7 +75,53 @@ In this lab, I will demonstrate how you can set up a SIEM home lab using Oracle�
   <br>
   <p><b>*NOTE*:</b>If there are issues with setting up the hypervisor and VM, there are multiple YouTube tutorials and resources / documentation at the respective websites that can assist in answering questions and troubleshooting various issues.</p>
 </ol>
-
+<h3>Task 3: Setting up the Agent to Collect Logs</h3>
+<p>Agents are software programs that are installed on endpoints or any device you want to collect data from and send to a centralized system for analysis and monitoring.  With Elastic SIEM, the agent is used for collection and forwarding of security-related events from individual endpoints to Elastic SIEM instances.</p>
+<br>
+<ol>
+  <li>Open a web browser and go to <a href="https://cloud.elastic.co">https://www.cloud.elastic.co</a> and log into Elastic.  Once logged in, select the deployment you created in the first task.  It should be noted under the “Hosted Deployments” and named “My deployment.”</li>
+  <br>
+  <div align="center">
+    <img src="https://i.imgur.com/CGwLUom.png" alt="My Deployment"/>
+  </div>
+  <br>
+  <li>When you reach the next screen, you will go to the menu on the right side of the screen and at the bottom, expand the “Management” menu and select “Integrations.”  Once you reach this page, you will want to select “Elastic Defend”.  If it does not appear at the top of the integrations page, you can complete a search for it.</li>
+   <br>
+  <div align="center">
+    <img src="https://i.imgur.com/h8KzLzC.png" alt="Creating Elastic Defend Integration"/>
+  </div>
+  <br>
+  <li>Click on the “Elastic Defend” tab and select “Add Elastic Defend.” Click at the bottom of the page “Install Elastic Agent.”</li>
+  <br>
+  <div align="center">
+    <img src="https://i.imgur.com/r6IYlGV.png" alt="Install Elastic Agent"/>
+  </div>
+  <br>
+  <li>The next page will provide installation instructions for various machine types that is to be run in the respective terminal.  If you are following along with me, you will want to make sure you copy the commands for the Linux machine type.</li>
+   <br>
+  <div align="center">
+    <img src="https://i.imgur.com/DrNeqpf.png" alt="Install Elastic Agent2"/>
+  </div>
+  <br>
+  <li>Paste the command into the Kali terminal (command line) and press enter to run the command.</li>
+   <br>
+  <div align="center">
+    <img src="https://i.imgur.com/lOXojnl.png" alt="Install Elastic Agent Command Line"/>
+  </div>
+  <br>
+  <li>You will then be asked enter the Sudo password for kali, which is kali and to confirm the location of where the Elastic Agent will be installed at and that it runs as a service.  Select “Y” for yes.  After completing this, you should receive a message of, “Elastic Agent has been successfully installed.”</li>
+  <br>
+  <div align="center">
+    <img src="https://i.imgur.com/zrGDLBe.png" alt="Install Elastic Agent Command Line2"/>
+  </div>
+  <br>
+  <li>Once this is completed, you can verify that the agent has been installed by running the following command: sudo systemctl status elastic-agent.service. If there is an error in installing the agent, make sure the Kali VM is connected to the internet before proceeding by running a ping command of any website, such as google.com.</li>
+  <br>
+  <div align="center">
+    <img src="https://i.imgur.com/XERERAu.png" alt="Elastic Agent Status"/>
+  </div>
+  <br>
+</ol>
 
 
 
