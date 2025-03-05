@@ -2,7 +2,7 @@
 
 
 <h2>Description</h2>
-In this lab, I will demonstrate how you can set up a SIEM home lab using Oracle’s VMWare VirtualBox that is operating a Kali Linux virtual machine (VM) with an Elastic reporting agent installed on the VM.  There are a few steps in completing this, with the first one is to download and install the VirtualBox hypervisor and Kali Linux and install that on the Hypervisor.  Once this is completed, you are ready to move forward to creating the Elastic SIEM.  
+In this lab, I will set up a SIEM home lab using Oracle’s VMWare VirtualBox that is operating a Kali Linux virtual machine (VM) with an Elastic reporting agent installed on the VM.  There are a few steps in completing this, with the first one is to download and install the VirtualBox hypervisor and Kali Linux and install that on the Hypervisor.  Once this is completed, you are ready to move forward to creating the Elastic SIEM.  
 <br/>
 
 <h2>Environments and Utilities Used</h2>
@@ -232,11 +232,48 @@ In this lab, I will demonstrate how you can set up a SIEM home lab using Oracle�
   <li>You can open a more detailed view of the captured data packets by clicking on the diagonal arrows next to any individual instance that will reveal a multitude of data broken down into three sections, Overview, Table, and JSON.  The Overview is basic information of the data packet.  The Table provides finer details about the instance such as an event ID, event kind, timestamp, index and many other data points.  The JSON tab reveals a file of the data points associated with the particular instance and can be very useful in HTTP compression and data manipulation.</li>
   <br>
   <div align="center">
-    <img src="https://i.imgur.com/BR0BbOI.png" alt="Detailed Observability Logs "/>
+    <img src="https://i.imgur.com/BR0BbOI.png" alt="Detailed Observability Logs"/>
   </div>
   <br>
 </ol>
-
+<h3>Task 6: Create a Dashboard to Visualize Events</h3>
+<p>To create an actual SIEM, it is likely that you want to include visualizations as part of the deployment.  This allows SOC team members a valuable tool to easily analyze the logs and identify patterns or anomalies in the incoming data.  An example of this is to create a simple dashboard that shows a count of security events over time.</p>
+<br>
+<p><b>To create dashboards, follow the following steps:</b></p>
+<br>
+<ol>
+  <li>Go to the top of the application and switch over from the “Observability” view to the “Security” view.</li>
+  <br>
+  <li>Click on the “Dashboards” tab and then select “Create Dashboard” on the right side of the screen.</li>
+  <br>
+  <div align="center">
+    <img src="https://i.imgur.com/oTuGQcu.png" alt="Create Data Visualization"/>
+  </div>
+  <br>
+  <li>In the “Editing new dashboard” screen, you will want to select “Create visualization.”</li>
+  <br>
+  <div align="center">
+    <img src="https://i.imgur.com/xLaIChi.png" alt="Create Data Visualization"/>
+  </div>
+  <br>
+  <li>To create the graph, you will need to set your horizontal or X axis and vertical or Y axis.  The horizontal axis should be the @timestamp and the vertical axis should be a count, which is a count of records for each recorded time segment.  This can be found on the right side of the screen.  Below is an image of the screen after I have selected the X and Y axis data points, showing that it automatically generates the visualization.   </li>
+  <br>
+  <div align="center">
+    <img src="https://i.imgur.com/f9qtqXy.png" alt="Bar Chart Visualization"/>
+  </div>
+  <br>
+  <li>Upon completion of setting up the respective axis, select “Save and return” at the top right of the screen, which returns you to a final save screen for the visualization.  Click on save again at the top right of the screen and provide a name, description, and tag if desired.  I highly recommend providing a title to make it easily recognized.  I noted my chart as “log Inflows.”  You can also hover over the graph and a pop-up will appear with a gear that allows you to edit settings and enter the title again, displaying it on the actual graph.</li>
+  <br>
+  <div align="center">
+    <img src="https://i.imgur.com/992MY4a.png" alt="Log Inflow Graph"/>
+  </div>
+  <br> 
+</ol>
+<h3>Task 7: Create an Alert</h3>
+<br>
+<p>One of the reasons to use a SIEM is to allow for effective and efficient management of security events and the environments providing timely, accurate data to SOC analysts.  A well-managed SIEM can provide a tremendous advantage to a team.  Alerts are created based on predefined rules or custom queries, and can be configured to trigger specific actions when specific conditions are met.</p>
+<br>
+<p><b>Steps for creating an alert:</b></p>
 
 
 
